@@ -39,7 +39,10 @@
       </div>
     </div>
   </nav>
+<?php
+include_once('formulaire.php');
 
+?>
   <!-- Footer -->
   <footer class="py-5 bg-dark">
     <div class="container">
