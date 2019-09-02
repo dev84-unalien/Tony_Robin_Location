@@ -54,6 +54,7 @@
       // Ajouter les valeurs a la requete SQL
       $requete->bind_param("isssss", $id_appart, $email, $name, $surname, $address, $tel);
       $requete->execute();
+      echo "Votre réservation à bien été prise en compte";
       // Fermer la connexion avec la bdd
       $requete->close();
     } else {

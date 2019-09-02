@@ -9,11 +9,23 @@
 </head>
 
 <body>
+    <?php
+    include_once('co_bdd.php');
+
+    $sql = "SELECT titre FROM location";
+    $result = $conn->query($sql);
+    ?>
     <form action="" method="POST">
         <div class="form-group">
             <label for="appart-select"></label>
             <select name="appart" id="appart-select">
-                <option value="appart1"> Appartement 1</option>
+                <?php 
+                    while ($row = $result->fetch_assoc()) {
+                        echo "
+                            <option>{$row['titre']}</option>
+                        ";
+                    }
+                ?>
             </select>
         </div>
         <div class="form-group">
