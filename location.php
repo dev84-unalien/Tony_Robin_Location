@@ -49,18 +49,16 @@
             <form action="" method="post">
               <div class="form-group">
                 <label for="titre">Titre</label>
-                <input type="text" class="form-control" id="titre" name="titre" placeholder="Titre...">
+                <input type="text" class="form-control" id="titre" name="titre" placeholder="Titre..." required>
               </div>
               <div class="form-group">
                 <label for="description">Description</label>
-                <input type="text" class="form-control" id="description" name="description" placeholder="Description...">
+                <input type="text" class="form-control" id="description" name="description" placeholder="Description..." required>
               </div>
-              <div class="form-group">
-                <label for="image">Photo du bien</label>
-                <input type="file" class="form-control-file" id="image" name="image">
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="confirmer">Confirmer</button>
               </div>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-              <button type="button" class="btn btn-primary" id="confirmer">Confirmer</button>
             </form>
           </div>
         </div>
@@ -144,19 +142,15 @@
   </footer>
 
   <script>
-    let titre = $('#titre');
-    let description = $('#description');
-    let image = $('#image');
     let confirmer = $('#confirmer');
-
+    
     confirmer.click(() => {
       $.ajax({
         url: "http://localhost/location/ajout_article.php",
         type: "POST",
         data: {
-            titre: titre,
-            description: description,
-            image: image
+            titre: $('#titre').val(),
+            description: $('#description').val()
         },
         success: function success (result) {
             alert(result);
