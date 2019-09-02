@@ -20,6 +20,10 @@
 
 <body>
 
+<?php
+include_once('co_bdd.php');
+?>
+
   <!-- Navigation -->
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
