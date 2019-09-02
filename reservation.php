@@ -23,6 +23,7 @@
 <?php
 include_once('co_bdd.php');
 include_once('navbar.php');
+include_once('formulaire.php');
 ?>
 
   <!-- Footer -->
