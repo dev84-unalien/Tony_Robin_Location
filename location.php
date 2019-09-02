@@ -20,9 +20,9 @@
 
 <body>
 
-<?php
-include_once('co_bdd.php');
-?>
+  <?php
+  include_once('co_bdd.php');
+  ?>
 
   <!-- Navigation -->
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -48,7 +48,33 @@ include_once('co_bdd.php');
 
     <h1 class="my-4">Biens disponibles</h1>
 
-    <a class="btn btn-primary m-4" href="#" role="button">Ajouter</a>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary mb-4" data-toggle="modal" data-target="#exampleModal">
+      Ajouter
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ajouter un bien</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="" method="post">
+              Titre: <input type="text" name="titre">
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+            <button type="button" class="btn btn-primary">Confirmer</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div class="row">
       <div class="col-lg-4 col-sm-6 portfolio-item">
@@ -84,6 +110,35 @@ include_once('co_bdd.php');
           </div>
         </div>
       </div>
+
+      <?php
+      $sql = "SELECT * FROM location";
+      $result = $conn->query($sql);
+      $article_debut = "
+        <div class='col-lg-4 col-sm-6 portfolio-item'>
+          <div class='card h-100'>
+      ";
+      $article_fin = "
+          </div>
+        </div>
+      ";
+
+      if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+          echo $article_debut;
+          echo "
+            <a href='#'><img class='card-img-top' src='{$row["image"]}'></a>
+            <div class='card-body'>
+              <h4 class='card-title'>
+                <a href='#'>{$row["titre"]}</a>
+              </h4>
+              <p class='card-text'>{$row["description"]}</p>
+            </div>";
+          echo $article_fin;
+        }
+      }
+      ?>
+
     </div>
     <!-- /.row -->
   </div>
