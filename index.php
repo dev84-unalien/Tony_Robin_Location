@@ -104,6 +104,7 @@
           </div>
         </div>
       </div>
+      <?php include_once('get_location.php') ?>
     </div>
     <!-- /.row -->
   </div>
